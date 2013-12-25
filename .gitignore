@@ -63,8 +63,3 @@ packages/
 
 #Test files
 *.testsettings
-
-#SQLite assemblies folders
-x64/
-x86/
-
