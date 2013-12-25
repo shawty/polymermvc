@@ -28,7 +28,6 @@
 ipch/
 obj/
 [Bb]in
-_[Bb]in*
 [Dd]ebug*/
 [Rr]elease*/
 Ankh.NoLoad
