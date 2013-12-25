@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-ng-app="polymerTestApp">
+
+  <head>
+    @Html.Partial("_MainHeadContent")
+    @RenderSection("UserCss", false)
+    @Html.Partial("_html5shiv")
+  </head>
+
+  <body>
+
+    @Html.Partial("_NavBar")
+
+    <div class="container-fluid"><br/>
+      <div class="row-fluid">
+        
+        <div class="span12">
+          @RenderBody()  
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="container-fluid footerText">
+      <p>&copy;2013 Digital Solutions Computer Software Ltd</p>
+    </div>
+
+    @Html.Partial("_MainFootScripts")
+    @Html.Partial("_CustomElements")
+    @RenderSection("UserScripts", false)
+    @RenderSection("Templates", false)
+    @RenderSection("Dialogs", false)
+
+  </body>
+</html>

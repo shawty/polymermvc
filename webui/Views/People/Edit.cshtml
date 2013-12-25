@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Edit Person";
+}
+
+<div class="page-header">
+  <h1>Edit Person <small>let's change this persons details shall we...</small></h1>
+</div>
+
+<div data-ng-controller="personEditControler">
+  <ds-personfulledit
+    name="{{name}}"
+    role="{{role}}"
+    recordid="{{recordid}}"
+    age="{{age}}"
+    contactpic="{{contactpic}}"
+    blogpage = "{{blogpage}}"
+    twitterhandle = "{{twitterhandle}}"
+    department = "{{department}}"
+    email = "{{email}}"
+    telephone = "{{telephone}}"
+    notes = "{{notes}}"
+    saveurl = "@Url.Action("Edit", "People", new { recordid = ViewBag.recordId })"
+    cancelurl = "@Url.Action("Index","Home")"
+    pagebase="@Url.Content("~")"/>
+</div>
+
+@section UserScripts
+{
+  <script type="text/javascript">
+
+    var polymerTestApp = angular.module('polymerTestApp', []);
+
+    polymerTestApp.controller('personEditControler', function ($scope, $http)
+    {
+      $http.get('@Url.Action("JsonInfo", "People", new {recordid = ViewBag.recordId})').success(function (data)
+      {
+        $scope.name = data.Name;
+        $scope.age = data.Age;
+        $scope.role = data.Role;
+        $scope.recordid = data.RecordId;
+        $scope.contactpic = data.ContactPic;
+        $scope.blogpage = data.BlogPage;
+        $scope.twitterhandle = data.TwitterHandle;
+        $scope.department = data.Department;
+        $scope.email = data.EMail;
+        $scope.telephone = data.Telephone;
+        $scope.notes = data.Notes;
+      });
+    });
+
+  </script>
+}

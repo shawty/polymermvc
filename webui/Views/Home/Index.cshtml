@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+  <h1>Home <small>the start point of good things to come</small></h1>
+</div>
+
+<p>The list below is a list of custom polymer UI elements</p>
+
+<div data-ng-controller="nameListControler">
+  
+  <div data-ng-repeat="name in names">
+    <ds-personinfo 
+      name="{{name.Name}}"
+      role="{{name.Role}}"
+      age="{{name.Age}}"
+      contactpic="{{name.ContactPic}}"
+      recordid="{{name.RecordId}}"
+      infourl="people/info"
+      editurl="people/edit">
+      
+    </ds-personinfo>
+    <br />
+  </div>
+
+</div>
+
+@section UserScripts
+{
+  <script type="text/javascript">
+
+    var polymerTestApp = angular.module('polymerTestApp', []);
+
+    polymerTestApp.controller('nameListControler', function ($scope, $http)
+    {
+      $http.get('@Url.Action("Names", "Data")').success(function (data)
+      {
+        $scope.names = data;
+      });
+    });
+
+  </script>
+}

@@ -1,0 +1,49 @@
+<link rel="import" href="polymer.html">
+
+<polymer-element name="ds-personinfo" attributes="age name role contactpic recordid infourl editurl">
+  <template>
+    <img style="width:128px; height:128px; border: 1px solid black; float: left; margin-right: 10px;" src="{{contactpic}}" />
+    <span><b class="text-info">Record Id : </b>{{recordid}}</span><br/>
+    <span><b class="text-info">Name : </b>{{name}}</span><br/>
+    <span><b class="text-info">Role : </b>{{role}}</span><br/>
+    <span><b class="text-info">Age : </b>{{age}}</span><br />
+    <span style="margin-top: 10px; display: inline-block;">
+      <button class="btn btn-small btn-primary" on-click="{{moreInfoClick}}">More Info</button>
+      <button class="btn btn-small btn-success" on-click="{{editClick}}">Edit</button>
+    </span>
+    <div style="clear: both;"></div>
+  </template>
+  <script>
+    Polymer('ds-personinfo', {
+      recordid: 0,
+      age: 0,
+      name: "Undefined",
+      role: "Undefined",
+      contactpic: "",
+      editurl: "edit",
+      infourl: "info",
+      applyAuthorStyles: true, // Allow use of styles from the parent (In this case bootstrap)
+
+      moreInfoClick: function (event, detail, sender)
+      {
+        if (this.infourl === "")
+        {
+          alert('PERSON INFO: No info url defined.');
+          return;
+        }
+        document.location.href = this.infourl + "/" + this.recordid;
+      },
+
+      editClick: function (event, detail, sender)
+      {
+        if (this.editurl === "")
+        {
+          alert('PERSON INFO: No edit url defined.');
+          return;
+        }
+        document.location.href = this.editurl + "/" + this.recordid;
+      }
+
+    });
+</script>
+</polymer-element>

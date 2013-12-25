@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Graph";
+}
+
+<div class="page-header">
+  <h1>Graph <small>the graphs have it. funky litte displays of interesting data.</small></h1>
+</div>
+
+<div data-ng-controller="graphDataControler">
+  <ds-bargraph id="barGraph" width="1000" height="100" data="{{graph}}"></ds-bargraph>
+  <br /><br />
+  <ds-linegraph id="lineGraph" width="1000" height="100" data="{{graph}}"></ds-linegraph>
+</div>
+
+@section UserScripts
+{
+  <script type="text/javascript">
+
+    var polymerTestApp = angular.module('polymerTestApp', []);
+
+    polymerTestApp.controller('graphDataControler', function ($scope, $http)
+    {
+      $http.get('@Url.Action("Graph", "Data")').success(function (data)
+      {
+        $scope.graph = data;
+      });
+    });
+
+  </script>
+}

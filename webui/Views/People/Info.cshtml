@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Person Info";
+}
+
+<div class="page-header">
+  <h1>Person Info <small>what would you like to know?</small></h1>
+</div>
+
+<div data-ng-controller="personInfoControler">
+  <ds-personfullinfo
+    indexurl="@Url.Action("Index","Home")"
+    name="{{name}}"
+    role="{{role}}"
+    recordid="{{recordid}}"
+    age="{{age}}"
+    contactpic="{{contactpic}}"
+    blogpage = "{{blogpage}}"
+    twitterhandle = "{{twitterhandle}}"
+    department = "{{department}}"
+    email = "{{email}}"
+    telephone = "{{telephone}}"
+    notes = "{{notes}}"/>
+</div>
+
+@section UserScripts
+{
+  <script type="text/javascript">
+
+    var polymerTestApp = angular.module('polymerTestApp', []);
+    var siteRootUrl = '@Url.Content("~")';
+
+    polymerTestApp.controller('personInfoControler', function ($scope, $http)
+    {
+      $http.get('@Url.Action("JsonInfo", "People", new {recordid = ViewBag.recordId})').success(function (data)
+      {
+        $scope.name = data.Name;
+        $scope.age = data.Age;
+        $scope.role = data.Role;
+        $scope.recordid = data.RecordId;
+        $scope.contactpic = siteRootUrl + data.ContactPic;
+        $scope.blogpage = data.BlogPage;
+        $scope.twitterhandle = data.TwitterHandle;
+        $scope.department = data.Department;
+        $scope.email = data.EMail;
+        $scope.telephone = data.Telephone;
+        $scope.notes = data.Notes;
+      });
+    });
+
+  </script>
+}

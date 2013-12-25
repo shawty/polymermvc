@@ -1,0 +1,9 @@
+﻿/* Site wide over ride styles go in here */
+.footerText
+{
+  font-size: 0.8em;
+  color: silver;
+  border-top: 1px solid lightgrey;
+  padding-top: 10px;
+  margin-top: 10px;
+}

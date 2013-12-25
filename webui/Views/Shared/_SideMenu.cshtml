@@ -1,0 +1,8 @@
+﻿@using(var nav = Html.Bootstrap().Begin(new Nav().Style(NavType.List).Stacked()))
+{
+  @nav.Header("Main Menu")
+  @nav.ActionLink("Home", "Index", "Home")
+  @nav.ActionLink("Graph", "Graph", "Home")
+  @nav.Divider()
+  
+}

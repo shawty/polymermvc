@@ -1,0 +1,102 @@
+﻿<link rel="import" href="polymer.html">
+
+<polymer-element name="ds-bargraph" attributes="width height data">
+  <template>
+    <canvas id="graphDisplay" width="{{width}}" height="{{height}}">Your browser does not support canvas.</canvas>
+  </template>
+  <script>
+    Polymer('ds-bargraph', {
+      width: 600,
+      height: 200,
+      data: '',
+
+      graphData: [
+      ],
+
+      theCanvas: null,
+
+      ready: function ()
+      {
+        this.draw();
+      },
+
+      dataChanged: function ()
+      {
+        this.graphData = JSON.parse(this.data);
+        this.draw();
+      },
+
+      draw: function ()
+      {
+        theCanvas = this.$.graphDisplay;
+
+        if (theCanvas != null && theCanvas.getContext)
+        {
+          var context = theCanvas.getContext('2d');
+
+          this.clearCanvas(context);
+          this.drawAxes(context);
+          this.drawBars(context);
+        }
+        else
+        {
+          alert("ERROR (Graph component): your browser does not support HTML5 canvas");
+        }
+      },
+
+      clearCanvas: function (canvasContext)
+      {
+        canvasContext.clearRect(0, 0, this.width, this.height);
+      },
+
+      drawAxes: function (canvasContext)
+      {
+        canvasContext.strokeStyle = 'black';
+        canvasContext.beginPath();
+        canvasContext.moveTo(0, 0);
+        canvasContext.lineTo(0, this.height);
+        canvasContext.stroke();
+        canvasContext.moveTo(0, this.height);
+        canvasContext.lineTo(this.width, this.height);
+        canvasContext.stroke();
+      },
+
+      drawBars: function (canvasContext)
+      {
+        if (this.graphData.length < 1) return; // no data, don't draw any bars...
+
+        var barwidth = this.width / this.graphData.length;
+        var dataIndex = 0;
+        var barSpacing = 2;
+        var maxBarHeight = 0;
+
+        // Find the height of the biggest bar value
+        for (var index = 0; index < this.graphData.length; index++)
+        {
+          if (this.graphData[index].Value > maxBarHeight)
+          {
+            maxBarHeight = this.graphData[index].Value;
+          }
+        }
+
+        canvasContext.fillStyle = 'green';
+        // Warning strange behaviour!!
+        // if you see 'Cannot read Value of undefined' in the debugger and the graph still draws
+        // change this following line to:
+        for (var x = 0; x < (this.width - barwidth); x += barwidth)
+        // force a refesh of the page, then change it back and all will work ok.
+        //for (var x = 0; x < (this.width); x += barwidth)
+        {
+          var barVal = this.graphData[dataIndex].Value;
+          var barPercent = (barVal / maxBarHeight) * 100;
+          var graphVal = (this.height / 100) * barPercent;
+          canvasContext.fillRect(x + barSpacing, this.height - 1, barwidth - (barSpacing * 3), -graphVal);
+
+          dataIndex++;
+        }
+
+      }
+
+    });
+</script>
+</polymer-element>
