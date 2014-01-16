@@ -237,7 +237,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MainHeadContent.cshtml" />
     <Content Include="Views\Shared\_MainFootScripts.cshtml" />
-    <Content Include="Views\Shared\_CustomElements.cshtml" />
+    <None Include="Views\Shared\_CustomElements.cshtml" />
     <Content Include="Views\Home\Graph.cshtml" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
