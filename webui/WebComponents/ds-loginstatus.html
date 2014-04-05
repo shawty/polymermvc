@@ -1,0 +1,21 @@
+<link rel="import" href="polymer.html">
+
+<polymer-element name="ds-loginstatus" attributes="loggedin name logouturl">
+  <template>
+    <template bind if="{{loggedin}}">
+      <span>Logged in as: <span class="text-info">{{name}}</span>&nbsp;&nbsp;<a href="{{logouturl}}" class="btn btn-primary btn-mini">Logout</a></span>
+    </template>
+    <template bind if="{{!loggedin}}">
+      <span><strong>Not Logged In</strong></span>
+    </template>
+  </template>
+  <script>
+    Polymer('ds-loginstatus', {
+
+      loggedin: false,
+      name: "undefined",
+      logouturl: "logout",
+      applyAuthorStyles: true
+    });
+</script>
+</polymer-element>

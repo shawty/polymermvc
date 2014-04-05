@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Knockout Index";
+    Layout = "~/Views/Shared/_LayoutNoAngular.cshtml";
+}
+
+<h2>Knockout Index</h2>
+<p>Just some small knockout JS tests</p>
+
+<table class="table" id="mytable">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Propper Name</th>
+      <th>Nick Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+@section userscripts
+{
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+
+      var myTableVm = new TableVM();
+      myTableVm.init("monkies");
+
+    });
+
+    TableVM = (function () {
+      var self = this;
+
+      self.init = function(tableId)
+      {
+        alert(tableId);
+      }
+
+    })();
+
+  </script>
+}
+
+@section Templates
+{
+  <script type="text/html" id="dataTableRow">
+
+    <tr>
+      <td>#</td>
+      <td>name</td>
+      <td>nickname</td>
+    </tr>
+
+  </script>
+}

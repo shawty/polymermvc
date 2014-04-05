@@ -1,0 +1,49 @@
+<link rel="import" href="polymer.html">
+
+<polymer-element name="ds-personfullinfo" attributes="age name role contactpic recordid indexurl blogpage twitterhandle department email telephone notes">
+  <template>
+    <img style="width:256px; height:256px; border: 1px solid black;" src="{{contactpic}}" />
+    <h2>Employee details for {{name}}</h2>
+    <h3 class="text-info">{{role}} <span class="text-success">(Department {{department}})</span></h3>
+    <hr />
+    <span><b class="text-success">Age : </b>{{age}}</span><br />
+    <span><b class="text-success">Blog Page : </b><a href="{{blogpage}}" target="_blank">{{blogpage}}</a></span><br />
+    <span><b class="text-success">Twitter Handle : </b>@{{twitterhandle}}</span><br />
+    <span><b class="text-success">Email Address : </b><a href="mailto:{{email}}" target="_blank">{{email}}</a></span><br />
+    <span><b class="text-success">Telephone Number : </b>{{telephone}}</span><br /><br />
+    <span><b class="text-success">Notes : </b></span><br />
+    <textarea rows="10" cols="40" style="width:500px;" readonly>{{notes}}</textarea><br />
+    <span style="margin-top: 10px; display: inline-block;">
+      <button class="btn btn-primary" on-click="{{indexClick}}">Return to index</button>
+    </span>
+    <div style="clear: both;"></div>
+  </template>
+  <script>
+    Polymer('ds-personfullinfo', {
+      recordid: 0,
+      age: 0,
+      name: "Undefined",
+      role: "Undefined",
+      contactpic: "",
+      blogpage: "Undefined",
+      twitterhandle: "Undefined",
+      department: "Undefined",
+      email: "Undefined",
+      telephone: "Undefined",
+      notes: "Undefined",
+      indexurl: "index",
+      applyAuthorStyles: true, // Allow use of styles from the parent (In this case bootstrap)
+
+      indexClick: function (event, detail, sender)
+      {
+        if (this.indexurl === "")
+        {
+          alert('PERSON FULL INFO: No index url defined.');
+          return;
+        }
+        document.location.href = this.indexurl;
+      }
+
+    });
+</script>
+</polymer-element>

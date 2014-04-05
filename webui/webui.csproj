@@ -18,6 +18,10 @@
     <UseIISExpress>false</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -138,12 +142,14 @@
     <Compile Include="classes\PeopleDatabase.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Controllers\dataController.cs" />
+    <Compile Include="Controllers\knockoutController.cs" />
     <Compile Include="Controllers\peopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FullPersonViewModel.cs" />
     <Compile Include="Models\GraphViewModel.cs" />
+    <Compile Include="Models\KoDataViewModel.cs" />
     <Compile Include="Models\MinimalPersonViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,12 +166,14 @@
     <Content Include="images\avatars\Avatar-7.png" />
     <Content Include="images\avatars\Avatar-8.png" />
     <Content Include="images\avatars\Avatar-9.png" />
-    <Content Include="scripts\ds-personfulledit.html" />
-    <Content Include="scripts\ds-personfullinfo.html" />
-    <Content Include="scripts\ds-linegraph.html" />
-    <Content Include="scripts\ds-bargraph.html" />
-    <Content Include="scripts\ds-loginstatus.html" />
-    <Content Include="scripts\ds-personinfo.html" />
+    <Content Include="scripts\knockout.mapping.min.js" />
+    <Content Include="scripts\knockout.min.js" />
+    <Content Include="WebComponents\ds-personfulledit.html" />
+    <Content Include="WebComponents\ds-personfullinfo.html" />
+    <Content Include="WebComponents\ds-linegraph.html" />
+    <Content Include="WebComponents\ds-bargraph.html" />
+    <Content Include="WebComponents\ds-loginstatus.html" />
+    <Content Include="WebComponents\ds-personinfo.html" />
     <Content Include="Global.asax" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -173,7 +181,7 @@
     <Content Include="scripts\jquery-2.0.2-vsdoc.js" />
     <Content Include="scripts\jquery-2.0.2.min.js" />
     <Content Include="scripts\platform.js" />
-    <Content Include="scripts\polymer.html" />
+    <Content Include="WebComponents\polymer.html" />
     <Content Include="scripts\polymer.js" />
     <Content Include="scripts\TwitterBootstrapMvcJs.js" />
     <Content Include="styles\bootstrap-responsive.min.css" />
@@ -193,6 +201,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Info.cshtml" />
+    <Content Include="Views\knockout\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoAngular.cshtml" />
+    <Content Include="Views\Shared\_MainFootScriptsKnockout.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -261,12 +272,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>39107</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost/polymermvc</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
