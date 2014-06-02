@@ -1,0 +1,105 @@
+﻿<link rel="import" href="polymer.html">
+
+<polymer-element name="ds-linegraph" attributes="width height data">
+  <template>
+    <canvas id="graphDisplay" width="{{width}}" height="{{height}}">Your browser does not support canvas.</canvas>
+  </template>
+  <script>
+    Polymer('ds-linegraph', {
+      width: 600,
+      height: 200,
+      data: '',
+
+      graphData: [
+      ],
+
+      theCanvas: null,
+
+      ready: function ()
+      {
+        this.draw();
+      },
+
+      dataChanged: function ()
+      {
+        this.graphData = JSON.parse(this.data);
+        this.draw();
+      },
+
+      draw: function ()
+      {
+        theCanvas = this.$.graphDisplay;
+
+        if (theCanvas != null && theCanvas.getContext)
+        {
+          var context = theCanvas.getContext('2d');
+
+          this.clearCanvas(context);
+          this.drawAxes(context);
+          this.drawLines(context);
+        }
+        else
+        {
+          alert("ERROR (Graph component): your browser does not support HTML5 canvas");
+        }
+      },
+
+      clearCanvas: function (canvasContext)
+      {
+        canvasContext.clearRect(0, 0, this.width, this.height);
+      },
+
+      drawAxes: function (canvasContext)
+      {
+        canvasContext.strokeStyle = 'black';
+        canvasContext.beginPath();
+        canvasContext.moveTo(0, 0);
+        canvasContext.lineTo(0, this.height);
+        canvasContext.stroke();
+        canvasContext.moveTo(0, this.height);
+        canvasContext.lineTo(this.width, this.height);
+        canvasContext.stroke();
+      },
+
+      drawLines: function (canvasContext)
+      {
+        if (this.graphData.length < 1) return; // no data, don't draw any bars...
+
+        var barwidth = this.width / this.graphData.length;
+        var dataIndex = 0;
+        var maxGraphHeight = 0;
+
+        // Find the height of the biggest bar value
+        for (var index = 0; index < this.graphData.length; index++)
+        {
+          if (this.graphData[index].Value > maxGraphHeight)
+          {
+            maxGraphHeight = this.graphData[index].Value;
+          }
+        }
+
+        canvasContext.strokeStyle = 'red';
+        var lastXLocation = 0;
+        canvasContext.beginPath();
+
+        var firstGraphVal = this.graphData[dataIndex].Value;
+        var firstGraphPercent = (firstGraphVal / maxGraphHeight) * 100;
+        var firstScaleVal = (this.height / 100) * firstGraphPercent;
+        canvasContext.moveTo(0, firstScaleVal);
+
+        for (var x = 0; x < (this.width - barwidth); x += barwidth)
+        {
+          var graphVal = this.graphData[dataIndex].Value;
+          var graphPercent = (graphVal / maxGraphHeight) * 100;
+          var scaleVal = (this.height / 100) * graphPercent;
+
+          canvasContext.lineTo(x + barwidth, this.height-scaleVal);
+          dataIndex++;
+        }
+        canvasContext.stroke();
+
+      }
+
+    });
+</script>
+</polymer-element>
