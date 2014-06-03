@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using data.Entities;
+using Data.Entities;
 
-namespace data.Migrations
+namespace Data.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<data.Store>
+    internal sealed class Configuration : DbMigrationsConfiguration<Data.Store>
     {
         public Configuration()
         {
@@ -17,7 +17,7 @@ namespace data.Migrations
             ContextKey = "data.Store";
         }
 
-        protected override void Seed(data.Store context)
+        protected override void Seed(Data.Store context)
         {
           //IList<Person> defaultPeople = new List<Person>
           //                            {

@@ -11,15 +11,14 @@
 <div data-ng-controller="nameListControler">
   
   <div data-ng-repeat="name in names">
-    <ds-personinfo 
-      name="{{name.Name}}"
-      role="{{name.Role}}"
-      age="{{name.Age}}"
-      contactpic="{{name.ContactPic}}"
-      recordid="{{name.RecordId}}"
-      infourl="people/info"
-      editurl="people/edit">
-      
+    <ds-personinfo name="{{name.Name}}"
+                   role="{{name.Role}}"
+                   age="{{name.Age}}"
+                   contactpic="{{name.ContactPic}}"
+                   recordid="{{name.RecordId}}"
+                   infourl="@Url.Action("Info", "People")"
+                   editurl="@Url.Action("Edit", "People")">
+
     </ds-personinfo>
     <br />
   </div>

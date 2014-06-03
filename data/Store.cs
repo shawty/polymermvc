@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using data.Entities;
+using Data.Entities;
 
-namespace data
+namespace Data
 {
   public class Store : DbContext
   {

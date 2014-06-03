@@ -2,6 +2,7 @@
 
 <polymer-element name="ds-personfullinfo" attributes="age name role contactpic recordid indexurl blogpage twitterhandle department email telephone notes">
   <template>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
     <img style="width:256px; height:256px; border: 1px solid black;" src="{{contactpic}}" />
     <h2>Employee details for {{name}}</h2>
     <h3 class="text-info">{{role}} <span class="text-success">(Department {{department}})</span></h3>
@@ -32,7 +33,6 @@
       telephone: "Undefined",
       notes: "Undefined",
       indexurl: "index",
-      applyAuthorStyles: true, // Allow use of styles from the parent (In this case bootstrap)
 
       indexClick: function (event, detail, sender)
       {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace webui.Controllers
+namespace Polymermvc.Controllers
 {
   public class HomeController : Controller
   {

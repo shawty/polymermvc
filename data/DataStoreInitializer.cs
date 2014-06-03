@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
-using data.Entities;
+using Data.Entities;
 
-namespace data
+namespace Data
 {
   public class DataStoreInitializer : CreateDatabaseIfNotExists<Store>
   {

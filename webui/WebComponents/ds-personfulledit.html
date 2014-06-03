@@ -2,6 +2,7 @@
 
 <polymer-element name="ds-personfulledit" attributes="age name role contactpic recordid indexurl blogpage twitterhandle department email telephone notes saveurl cancelurl pagebase">
   <template>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
     <img style="width:256px; height:256px; border: 1px solid black;" src="{{pagebase}}{{contactpic}}" />
     <h2>Edit Employee details</h2>
     <hr />
@@ -66,7 +67,6 @@
       saveurl: "",
       cancelurl: "",
       pagebase: "/",
-      applyAuthorStyles: true, // Allow use of styles from the parent (In this case bootstrap)
 
       cancelClick: function (event, detail, sender)
       {

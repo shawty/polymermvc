@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using data;
-using data.Entities;
-using webui.Models;
+using Data;
+using Data.Entities;
+using Polymermvc.Models;
 
-namespace webui.classes
+namespace Polymermvc.Classes
 {
   public class PeopleDatabase
   {

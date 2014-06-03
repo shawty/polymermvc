@@ -1,4 +1,4 @@
-﻿namespace webui.Models
+﻿namespace Polymermvc.Models
 {
   public class FullPersonViewModel
   {

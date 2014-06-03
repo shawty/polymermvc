@@ -2,6 +2,7 @@
 
 <polymer-element name="ds-loginstatus" attributes="loggedin name logouturl">
   <template>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
     <template bind if="{{loggedin}}">
       <span>Logged in as: <span class="text-info">{{name}}</span>&nbsp;&nbsp;<a href="{{logouturl}}" class="btn btn-primary btn-mini">Logout</a></span>
     </template>
@@ -15,7 +16,6 @@
       loggedin: false,
       name: "undefined",
       logouturl: "logout",
-      applyAuthorStyles: true
     });
 </script>
 </polymer-element>

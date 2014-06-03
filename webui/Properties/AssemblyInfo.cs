@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("webui")]
+[assembly: AssemblyTitle("Polymermvc")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Digital Solutions Computer Software UK")]
-[assembly: AssemblyProduct("webui")]
-[assembly: AssemblyCopyright("Copyright © Digital Solutions Computer Software UK 2013")]
+[assembly: AssemblyProduct("Demo MVC App showing how to use the google polymer web component framework in as ASP.NET MVC app")]
+[assembly: AssemblyCopyright("Copyright © Digital Solutions Computer Software UK 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

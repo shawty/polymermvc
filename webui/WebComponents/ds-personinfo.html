@@ -2,6 +2,7 @@
 
 <polymer-element name="ds-personinfo" attributes="age name role contactpic recordid infourl editurl">
   <template>
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
     <img style="width:128px; height:128px; border: 1px solid black; float: left; margin-right: 10px;" src="{{contactpic}}" />
     <span><b class="text-info">Record Id : </b>{{recordid}}</span><br/>
     <span><b class="text-info">Name : </b>{{name}}</span><br/>
@@ -22,7 +23,6 @@
       contactpic: "",
       editurl: "edit",
       infourl: "info",
-      applyAuthorStyles: true, // Allow use of styles from the parent (In this case bootstrap)
 
       moreInfoClick: function (event, detail, sender)
       {

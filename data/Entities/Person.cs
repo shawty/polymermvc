@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace data.Entities
+namespace Data.Entities
 {
   [Table("People")]
   public class Person

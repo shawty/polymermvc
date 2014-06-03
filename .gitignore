@@ -41,6 +41,7 @@ _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
 *.sass-cache
+.JustCode*/
 
 #Project files
 [Bb]uild/

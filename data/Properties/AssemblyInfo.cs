@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("data")]
+[assembly: AssemblyTitle("Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Digital Solutions Computer Software UK")]
-[assembly: AssemblyProduct("data")]
-[assembly: AssemblyCopyright("Copyright © Digital Solutions Computer Software UK 2013")]
+[assembly: AssemblyProduct("Fake data library for polymer MVC example project")]
+[assembly: AssemblyCopyright("Copyright © Digital Solutions Computer Software UK 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
