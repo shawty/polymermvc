@@ -30,7 +30,7 @@
       {
         theCanvas = this.$.graphDisplay;
 
-        if (theCanvas != null && theCanvas.getContext)
+        if (theCanvas !== null && theCanvas.getContext)
         {
           var context = theCanvas.getContext('2d');
 
@@ -79,7 +79,6 @@
         }
 
         canvasContext.strokeStyle = 'red';
-        var lastXLocation = 0;
         canvasContext.beginPath();
 
         var firstGraphVal = this.graphData[dataIndex].Value;
