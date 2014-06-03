@@ -1,6 +1,8 @@
 polymermvc
 ==========
 
+[(Update 03/06/2014) - Updated things to the new release version of polymer JS - @version: 0.3.1-32cc3e4]
+
 Sample ASP.NET MVC4 application showing how to use Polymer.JS/Bootstrap and Angular.JS to make web components in an MVC4 project
 
 This is a simple ASP.NET MVC4 project, set up to use the new Polymer.JS platform stubs from google.
